@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app='SCC'>
+  <head>
+    <title>My SIM Card Collection</title>
+    <script src='js/jquery-1.9.1.js'></script>
+    <script src='js/jquery-ui-1.9.1.custom.min.js'></script>
+    <script src='js/jquery.layout-latest.min.js'></script>
+    <script src='js/angular.min.js'></script>
+    <script src='js/ng-grid.min.js'></script>
+    <script src='js/controllers.js'></script>
+    <link rel='stylesheet' type='text/css' href='js/ng-grid.min.css' />
+    <link rel='stylesheet' type='text/css' href='css/styles.css' />
+  </head>
+  <body>
+    <div class='header'>
+      <h1>My SIM Card Collection</h1>
+    </div>
+    <div class='íntro'>
+      <p>One of my hobbies is collecting pristine SIM Cards.
+      This developed after I started traveling
+      through Latin America for work, and although the collection
+      is fairly small at this time, it has been steadily growing
+      for the past couple of years.</p>
+    </div>
+
+    <div ng-controller='SCController'>
+      <div class='gridContainer'>
+        <div ng-grid="sccGridOptions" class='gridStyle'></div>
+      </div>
+    </div>
+  </body>
+</html>
