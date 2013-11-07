@@ -2,31 +2,75 @@
 <html ng-app='SCC'>
   <head>
     <title>My SIM Card Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='js/ng-grid.min.css' />
+    <link rel='stylesheet' type='text/css' href='css/styles.css' />
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='container'>
+      <div class='page-header'>
+        <h1>My SIM Card Collection</h1>
+        <p class='lead'>One of my hobbies is collecting mint-on-card SIM Cards.
+        This developed after I started traveling
+        through Latin America for work. Although the collection
+        is fairly small at this time, it has been steadily growing
+        for the past couple of years.</p>
+      </div>
+
+      <div ng-controller='SCController'>
+        <!--
+        <div class='gridContainer'>
+          <div ng-grid="sccGridOptions" class='gridStyle'></div>
+        </div>
+-->
+
+        <div class='row-fluid' ng-repeat='simGroup in simsGroupedBy2'>
+          <ul class='thumbnails'>
+            <li class='col-md-2' ng-repeat='sim in simGroup'>
+              <div class='thumbnail'>
+                <a href ng-click="showImage(sim, 'front')"><img src='images/thumbs/{{sim.imgfront}}'/></a>
+                <a href ng-click="showImage(sim, 'back')"><img src='images/thumbs/{{sim.imgback}}'/></a>
+                <div class='caption'>
+                  <h3>{{sim.mobileNetwork}} <small>({{sim.country}})<small></h3>
+                  <p>{{sim.description}}</p>
+                  <small>{{sim.serial}}</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div> <!-- row -->
+
+        <!-- Modal dialog for showing images-->
+        <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">{{imageTitle}}</h4>
+              </div>
+              <div class="modal-body">
+                <img src='{{currentImg}}' />
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+      </div> <!-- SCController -->
+
+    </div> <!-- container -->
     <script src='js/jquery-1.9.1.js'></script>
     <script src='js/jquery-ui-1.9.1.custom.min.js'></script>
     <script src='js/jquery.layout-latest.min.js'></script>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
     <script src='js/angular.min.js'></script>
     <script src='js/ng-grid.min.js'></script>
     <script src='js/controllers.js'></script>
-    <link rel='stylesheet' type='text/css' href='js/ng-grid.min.css' />
-    <link rel='stylesheet' type='text/css' href='css/styles.css' />
-  </head>
-  <body>
-    <div class='header'>
-      <h1>My SIM Card Collection</h1>
-    </div>
-    <div class='íntro'>
-      <p>One of my hobbies is collecting mint-on-card SIM Cards.
-      This developed after I started traveling
-      through Latin America for work. Although the collection
-      is fairly small at this time, it has been steadily growing
-      for the past couple of years.</p>
-    </div>
-
-    <div ng-controller='SCController'>
-      <div class='gridContainer'>
-        <div ng-grid="sccGridOptions" class='gridStyle'></div>
-      </div>
-    </div>
+    <script>
+      function showModal(imgname) {
+      }
+    </script>
   </body>
 </html>
