@@ -19,27 +19,62 @@
       </div>
 
       <div ng-controller='SCController'>
-        <!--
-        <div class='gridContainer'>
-          <div ng-grid="sccGridOptions" class='gridStyle'></div>
-        </div>
--->
 
-        <div class='row-fluid' ng-repeat='simGroup in simsGroupedBy2'>
-          <ul class='thumbnails'>
-            <li class='col-md-2' ng-repeat='sim in simGroup'>
-              <div class='thumbnail'>
-                <a href ng-click="showImage(sim, 'front')"><img src='images/thumbs/{{sim.imgfront}}'/></a>
-                <a href ng-click="showImage(sim, 'back')"><img src='images/thumbs/{{sim.imgback}}'/></a>
-                <div class='caption'>
-                  <h3>{{sim.mobileNetwork}} <small>({{sim.country}})<small></h3>
-                  <p>{{sim.description}}</p>
-                  <small>{{sim.serial}}</small>
-                </div>
-              </div>
-            </li>
+        <div class="row marketing">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" id="navTab">
+            <li><a href="#simList" data-toggle="tab">List</a></li>
+            <li><a href="#allSims" data-toggle="tab">All</a></li>
           </ul>
-        </div> <!-- row -->
+
+          <div class="tab-content">
+
+            <div class="tab-pane active" id='simList'>
+              <div class='gridContainer'>
+                <div ng-grid="sccGridOptions" class='gridStyle'></div>
+              </div>
+
+              <div class='sim-details pull-right'>
+                <div class='row' ng-show='!selection()'>
+                  <div class='.span1'>
+                    <img src="js/holder.js/208x130" class='thumbnail'/>
+                  </div>
+                  <div class='.span1'>
+                    <img src="js/holder.js/208x130" class='thumbnail'/>
+                  </div>
+                </div>
+                <div class='row' ng-show='selection()'>
+                  <div class='.span1'>
+                    <img ng-src="images/thumbs/{{selection().imgfront}}" class='thumbnail'/>
+                  </div>
+                  <div class='.span1'>
+                    <img ng-src="images/thumbs/{{selection().imgback}}" class='thumbnail'/>
+                  </div>
+                </div>
+              </div> <!-- sim-details -->
+            </div> <!-- simList -->
+
+
+            <div class="tab-pane" id='allSims'>
+              <div class='row-fluid' ng-repeat='simGroup in simsGroupedBy2'>
+                <ul class='thumbnails'>
+                  <li class='col-md-2' ng-repeat='sim in simGroup'>
+                    <div class='thumbnail'>
+                      <a href ng-click="showImage(sim, 'front')"><img ng-src='images/thumbs/{{sim.imgfront}}'/></a>
+                      <a href ng-click="showImage(sim, 'back')"><img ng-src='images/thumbs/{{sim.imgback}}'/></a>
+                      <div class='caption'>
+                        <h3>{{sim.mobileNetwork}} <small>({{sim.country}})<small></h3>
+                        <p>{{sim.description}}</p>
+                        <small>{{sim.serial}}</small>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div> <!-- row-fluid -->
+            </div> <!-- allSims -->
+
+          </div> <!-- tab-content -->
+        </div> <!-- row marketing -->
 
         <!-- Modal dialog for showing images-->
         <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -50,7 +85,7 @@
                 <h4 class="modal-title" id="myModalLabel">{{imageTitle}}</h4>
               </div>
               <div class="modal-body">
-                <img src='{{currentImg}}' />
+                <img ng-src='{{currentImg}}' />
               </div>
               <div class="modal-footer">
               </div>
@@ -68,9 +103,11 @@
     <script src='js/angular.min.js'></script>
     <script src='js/ng-grid.min.js'></script>
     <script src='js/controllers.js'></script>
+    <script src="js/holder.js"></script>
     <script>
-      function showModal(imgname) {
-      }
+      $(function () {
+        $('#navTab a:first').tab('show')
+      })
     </script>
   </body>
 </html>

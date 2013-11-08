@@ -27,6 +27,7 @@ app.controller('SCController', function($scope,$http,$filter) {
   $scope.simsGroupedBy2 = [];
   $scope.currentImg = 'images/blank-full.png';
   $scope.imageTitle = '';
+  $scope.currentSelection = [];
 
   $scope.loadData = function() {
     var httpRequest = $http.get('mint.json').success(
@@ -38,6 +39,9 @@ app.controller('SCController', function($scope,$http,$filter) {
         }
       })
   };
+  $scope.selection = function() {
+    return $scope.currentSelection.length > 0 ? $scope.currentSelection[0] : null;
+  }
   $scope.sccGridOptions = {
     data: 'sims',
     showFilter: true,
@@ -45,11 +49,12 @@ app.controller('SCController', function($scope,$http,$filter) {
     jqueryUITheme: true,
     multiSelect: false,
     maintainColumnRadios: true,
+    selectedItems: $scope.currentSelection,
     columnDefs: [
       {field: 'mobileNetwork', width: 120, displayName: 'Network'},
       {field: 'country', width: 160, displayName: 'Country'},
       {field: 'serial', width: 180, displayName: 'Serial'},
-      {field: 'description', width: "*", displayName: 'Description'},
+      //{field: 'description', width: "*", displayName: 'Description'},
     ]
   };
   $scope.showImage = function(sim, image) {
