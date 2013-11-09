@@ -3,111 +3,90 @@
   <head>
     <title>My SIM Card Collection</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' type='text/css' href='js/ng-grid.min.css' />
-    <link rel='stylesheet' type='text/css' href='css/styles.css' />
-    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' href='css/bootstrap-responsive.min.css'>
+    <link rel='stylesheet' href='css/styles.css'>
   </head>
   <body>
-    <div class='container'>
-      <div class='page-header'>
+    <div class='jumbotron'>
+      <div class='container'>
         <h1>My SIM Card Collection</h1>
-        <p class='lead'>One of my hobbies is collecting mint-on-card SIM Cards.
-        This developed after I started traveling
-        through Latin America for work. Although the collection
+        <p class='lead'>One of my hobbies is collecting mint-on-card SIM cards.
+        I started on this a few years ago when I began to travel
+        through Latin America as part of my job. Although the collection
         is fairly small at this time, it has been steadily growing
-        for the past couple of years.</p>
+        during the past couple of years.</p>
       </div>
+    </div>
 
-      <div ng-controller='SCController'>
+    <div class='container' ng-controller='SCController'>
+      <div class="row marketing">
+        <!-- filter header -->
+        <form class='form-inline filter-bar'>
+          <div class='form-group'>
+            <label for='countryDropDown'>Country:</label>
+            <select class='form-control combo' id='countryDropDown' ng-model='selectedCountry' ng-change='filterData()'>
+              <option ng-repeat='(country,list) in countryList' value='{{country}}'>{{country}}</option>
+            </select>
 
-        <div class="row marketing">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" id="navTab">
-            <li><a href="#simList" data-toggle="tab">List</a></li>
-            <li><a href="#allSims" data-toggle="tab">All</a></li>
-          </ul>
+            <label for='networkDropDown'>Mobile Network:</label>
+            <select class='form-control combo' id='networkDropDown' ng-model='selectedNetwork' ng-change='filterData()'>
+              <option ng-repeat='(net,list) in networkList' value='{{net}}'>{{net}}</option>
+            </select>
+          </div>
+        </form>
 
-          <div class="tab-content">
+        <!-- results panel -->
+        <div class='container'>
+          <div ng-repeat='simGroup in matchingSims'>
+            <div class='row-fluid'>
+              <div class='panel panel-default span6' ng-repeat='sim in simGroup'>
+                <div class='panel-heading'>
+                  <h3 class='panel-title'>{{sim.mobileNetwork}} <small>({{sim.country}})</small></h3>
+                </div> <!-- panel-heading -->
 
-            <div class="tab-pane active" id='simList'>
-              <div class='gridContainer'>
-                <div ng-grid="sccGridOptions" class='gridStyle'></div>
-              </div>
-
-              <div class='sim-details pull-right'>
-                <div class='row' ng-show='!selection()'>
-                  <div class='.span1'>
-                    <img src="js/holder.js/208x130" class='thumbnail'/>
+                <div class='panel-body'>
+                  <div class='col-xs-6'>
+                    <a href ng-click="showImage(sim, 'front')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgfront}}'/></a>
+                    <a href ng-click="showImage(sim, 'back')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgback}}'/></a>
                   </div>
-                  <div class='.span1'>
-                    <img src="js/holder.js/208x130" class='thumbnail'/>
+                  <div class='col-xs-6'>
+                    <p>{{sim.description}}</p>
+                    <small>{{sim.serial}}</small>
                   </div>
-                </div>
-                <div class='row' ng-show='selection()'>
-                  <div class='.span1'>
-                    <img ng-src="images/thumbs/{{selection().imgfront}}" class='thumbnail'/>
-                  </div>
-                  <div class='.span1'>
-                    <img ng-src="images/thumbs/{{selection().imgback}}" class='thumbnail'/>
-                  </div>
-                </div>
-              </div> <!-- sim-details -->
-            </div> <!-- simList -->
+                </div> <!-- panel-body -->
+              </div> <!-- panel -->
+            </div> <!-- row-fluid -->
+          </div> <!-- repeat -->
+        </div> <!-- outer panel -->
 
+      </div> <!-- row marketing -->
 
-            <div class="tab-pane" id='allSims'>
-              <div class='row-fluid' ng-repeat='simGroup in simsGroupedBy2'>
-                <ul class='thumbnails'>
-                  <li class='col-md-2' ng-repeat='sim in simGroup'>
-                    <div class='thumbnail'>
-                      <a href ng-click="showImage(sim, 'front')"><img ng-src='images/thumbs/{{sim.imgfront}}'/></a>
-                      <a href ng-click="showImage(sim, 'back')"><img ng-src='images/thumbs/{{sim.imgback}}'/></a>
-                      <div class='caption'>
-                        <h3>{{sim.mobileNetwork}} <small>({{sim.country}})<small></h3>
-                        <p>{{sim.description}}</p>
-                        <small>{{sim.serial}}</small>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div> <!-- row-fluid -->
-            </div> <!-- allSims -->
+      <!-- Modal dialog for showing images-->
+      <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">{{imageTitle}}</h4>
+            </div>
+            <div class="modal-body">
+              <img ng-src='{{currentImg}}' ng-show='currentImg'/>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
 
-          </div> <!-- tab-content -->
-        </div> <!-- row marketing -->
-
-        <!-- Modal dialog for showing images-->
-        <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{imageTitle}}</h4>
-              </div>
-              <div class="modal-body">
-                <img ng-src='{{currentImg}}' />
-              </div>
-              <div class="modal-footer">
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-      </div> <!-- SCController -->
 
     </div> <!-- container -->
     <script src='js/jquery-1.9.1.js'></script>
     <script src='js/jquery-ui-1.9.1.custom.min.js'></script>
     <script src='js/jquery.layout-latest.min.js'></script>
-    <script src="js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src='js/angular.min.js'></script>
-    <script src='js/ng-grid.min.js'></script>
     <script src='js/controllers.js'></script>
     <script src="js/holder.js"></script>
-    <script>
-      $(function () {
-        $('#navTab a:first').tab('show')
-      })
-    </script>
   </body>
 </html>

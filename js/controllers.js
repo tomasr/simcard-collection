@@ -1,4 +1,4 @@
-var app = angular.module('SCC', ['ngGrid']);
+var app = angular.module('SCC',[]);
 
 app.filter('groupBy', function() {
   return function(items, groupedBy) {
@@ -24,39 +24,66 @@ app.filter('groupBy', function() {
 
 app.controller('SCController', function($scope,$http,$filter) {
   $scope.sims = [];
-  $scope.simsGroupedBy2 = [];
-  $scope.currentImg = 'images/blank-full.png';
+  $scope.networkList = [];
+  $scope.countryList = [];
+  $scope.matchingSims = [];
+  $scope.currentImg = null;
   $scope.imageTitle = '';
-  $scope.currentSelection = [];
+
+  function groupByField(list, getter) {
+    var result = {};
+    result[" all"] = list;
+    for ( var i=0; i < list.length; i++ ) {
+      var key = getter(list[i]);
+      var subset = result[key];
+      if ( !subset ) {
+        subset = [];
+        result[key] = subset;
+      }
+      subset.push(list[i]);
+    }
+    return result;
+  }
 
   $scope.loadData = function() {
     var httpRequest = $http.get('mint.json').success(
       function(data) {
         $scope.sims = angular.fromJson(data).result;
-        $scope.simsGroupedBy2 = $filter('groupBy')($scope.sims, 2);
+        $scope.networkList = groupByField($scope.sims, function (obj) { return obj.mobileNetwork; });
+        $scope.countryList = groupByField($scope.sims, function (obj) { return obj.country; });
         if (!$scope.$$phase) {
           $scope.$apply();
         }
       })
   };
-  $scope.selection = function() {
-    return $scope.currentSelection.length > 0 ? $scope.currentSelection[0] : null;
+
+  $scope.filterData = function() {
+    $scope.matchingSims = $filter('groupBy')($scope.getMatchingCards(), 2);
   }
-  $scope.sccGridOptions = {
-    data: 'sims',
-    showFilter: true,
-    showGroupPanel: true,
-    jqueryUITheme: true,
-    multiSelect: false,
-    maintainColumnRadios: true,
-    selectedItems: $scope.currentSelection,
-    columnDefs: [
-      {field: 'mobileNetwork', width: 120, displayName: 'Network'},
-      {field: 'country', width: 160, displayName: 'Country'},
-      {field: 'serial', width: 180, displayName: 'Serial'},
-      //{field: 'description', width: "*", displayName: 'Description'},
-    ]
+
+  $scope.getMatchingCards = function() {
+    var result = [];
+    var cardsByCountry = $scope.countryList[$scope.selectedCountry];
+    if ( !cardsByCountry ) {
+      return result;
+    }
+    var network = $scope.selectedNetwork;
+    if ( network && network !== ' all' ) {
+      for ( var i=0; i < cardsByCountry.length; i++ ) {
+        if ( cardsByCountry[i].mobileNetwork === network ) {
+          result.push(cardsByCountry[i]);
+        }
+      }
+      return result;
+    } else {
+      return cardsByCountry;
+    }
   };
+
+  $scope.groupedBy2s = function(list) {
+    return $filter('groupBy')($scope.matchingCards(), 2);
+  }
+
   $scope.showImage = function(sim, image) {
     if ( image === 'front' ) {
       $scope.imageTitle = sim.serial + ' (Front)';
@@ -65,7 +92,7 @@ app.controller('SCController', function($scope,$http,$filter) {
       $scope.imageTitle = sim.serial + ' (Back)';
       $scope.currentImg = "images/full/" + sim.imgback;
     }
-    $('#myModal').modal({show: true});
+    $('#myModal').modal({hide: false});
   }
   $scope.loadData();
 });

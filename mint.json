@@ -169,6 +169,12 @@
     "serial": "8952020612141080707"
   },
   {
+    "mobileNetwork": "Telcel",
+    "country": "Mexico",
+    "description": "Telcel V5.0 128KB prepaid SIM - blue H6 R9",
+    "serial": "8952020313491151673"
+  },
+  {
     "mobileNetwork": "Movistar",
     "country": "Panama",
     "description": "Movistar prepaid SIM - dark blue, girl taking group photo",

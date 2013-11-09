@@ -5,3 +5,24 @@
 .gridStyle {
   height: 100%;
 }
+.combo {
+  width: 180px;
+}
+.filter-bar {
+  margin-bottom: 1em;
+}
+.tmb {
+  border: 1px solid #ddd;
+  padding: 4px;
+  display: block;
+  width: *;
+}
+a.tmb:hover {
+  border-color: #428bca;
+}
+.thumbs {
+  width: 220px;
+}
+.description {
+  width: 220px;
+}
