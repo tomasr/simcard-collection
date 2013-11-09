@@ -11,18 +11,6 @@
 .filter-bar {
   margin-bottom: 1em;
 }
-.tmb {
-  border: 1px solid #ddd;
-  padding: 4px;
-  display: block;
-  width: *;
-}
-a.tmb:hover {
-  border-color: #428bca;
-}
-.thumbs {
-  width: 220px;
-}
-.description {
-  width: 220px;
+.icon {
+  color: #428bca;
 }
