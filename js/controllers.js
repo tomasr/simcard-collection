@@ -26,6 +26,7 @@ app.controller('SCController', function($scope,$http,$filter) {
   $scope.sims = [];
   $scope.networkList = [];
   $scope.countryList = [];
+  $scope.matchingSimsGrouped = [];
   $scope.matchingSims = [];
   $scope.currentImg = null;
   $scope.imageTitle = '';
@@ -58,7 +59,8 @@ app.controller('SCController', function($scope,$http,$filter) {
   };
 
   $scope.filterData = function() {
-    $scope.matchingSims = $filter('groupBy')($scope.getMatchingCards(), 2);
+    $scope.matchingSims = $scope.getMatchingCards();
+    $scope.matchingSimsGrouped = $filter('groupBy')($scope.matchingSims, 2);
   }
 
   $scope.getMatchingCards = function() {
@@ -79,10 +81,6 @@ app.controller('SCController', function($scope,$http,$filter) {
       return cardsByCountry;
     }
   };
-
-  $scope.groupedBy2s = function(list) {
-    return $filter('groupBy')($scope.matchingCards(), 2);
-  }
 
   $scope.showImage = function(sim, image) {
     if ( image === 'front' ) {

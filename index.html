@@ -36,10 +36,13 @@
             </select>
           </div>
         </form>
+        <div ng-cloak class='alert alert-success' ng-show='matchingSims'>
+          Total Results: <strong>{{matchingSims.length}}</strong>
+        </div>
 
         <!-- results panel -->
         <div class='container'>
-          <div ng-repeat='simGroup in matchingSims'>
+          <div ng-repeat='simGroup in matchingSimsGrouped'>
             <div class='row-fluid'>
               <div class='panel panel-default span6' ng-repeat='sim in simGroup'>
                 <div class='panel-heading'>
