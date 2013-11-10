@@ -22,6 +22,19 @@ app.filter('groupBy', function() {
   };
 });
 
+app.directive('ngHolder', function() {
+  return {
+    replace: true,
+    link: function(scope, element, args) {
+      scope.$watch('ngHolder', function(value) {
+        var img = "<img data-src='holder.js/" + args.ngHolder + "' class='placeholder' id='" + args.id + "-img'/>";
+        element.append(img);
+        //Holder.run({images: '#' + args.id + '-img'});
+      });
+    }
+  };
+});
+
 app.controller('SCController', function($scope,$http,$filter) {
   $scope.sims = [];
   $scope.networkList = [];

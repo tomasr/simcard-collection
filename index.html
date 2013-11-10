@@ -50,9 +50,13 @@
                 </div> <!-- panel-heading -->
 
                 <div class='panel-body'>
-                  <div class='col-xs-6'>
+                  <div class='col-xs-6' ng-show='sim.imgfront'>
                     <a href ng-click="showImage(sim, 'front')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgfront}}'/></a>
                     <a href ng-click="showImage(sim, 'back')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgback}}'/></a>
+                  </div>
+                  <div class='col-xs-6' ng-show='!(sim.imgfront)'>
+                    <a href class='thumbnail' ng-holder='208x133' id='{{sim.serial}}-front'></a>
+                    <a href class='thumbnail' ng-holder='208x133' id='{{sim.serial}}-back'></a>
                   </div>
                   <div class='col-xs-6'>
                     <p>{{sim.description}}</p>
