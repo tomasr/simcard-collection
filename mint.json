@@ -172,6 +172,8 @@
     "mobileNetwork": "Telcel",
     "country": "Mexico",
     "description": "Telcel V5.0 128KB prepaid SIM - blue H6 R9",
+    "imgfront": "telcel.mx.3-front.png",
+    "imgback": "telcel.mx.3-back.png",
     "serial": "8952020313491151673"
   },
   {
@@ -210,78 +212,104 @@
     "mobileNetwork": "H2O",
     "country": "USA",
     "description": "H2O prepaid mini/micro SIM",
+    "imgfront": "h2o.us.1-front.png",
+    "imgback": "h2o.us.1-back.png",
     "serial": "89014104256013234156"
   },
   {
     "mobileNetwork": "Straight Talk",
     "country": "USA",
     "description": "Straight Talk prepaid mini SIM for at&t - light blue TF64PSIMC4B",
+    "imgfront": "straighttalk.us.3-front.png",
+    "imgback": "straighttalk.us.3-back.png",
     "serial": "89014103256018707496"
   },
   {
     "mobileNetwork": "Straight Talk",
     "country": "USA",
-    "description": "Straight Talk prepaid mini SIM for T-Mobile - dark blue TF64PSIMC4MB",
-    "serial": "89014103255694576563"
+    "description": "Straight Talk prepaid micro SIM for at&t - dark blue TF64PSIMT5B",
+    "imgfront": "straighttalk.us.1-front.png",
+    "imgback": "straighttalk.us.1-back.png",
+    "serial": "8901260832116075856"
   },
   {
     "mobileNetwork": "Straight Talk",
     "country": "USA",
-    "description": "Straight Talk prepaid micro SIM for at&t - pink TF64PSIMT5B",
-    "serial": "8901260832116075856"
+    "description": "Straight Talk prepaid mini SIM for T-Mobile - pink TF64PSIMC4MB",
+    "imgfront": "straighttalk.us.2-front.png",
+    "imgback": "straighttalk.us.2-back.png",
+    "serial": "89014103255694576563"
   },
   {
     "mobileNetwork": "Orange",
     "country": "Dominican Republic",
     "description": "Orange prepaid SIM - girl with plane",
+    "imgfront": "orange.do.1-front.png",
+    "imgback": "orange.do.1-back.png",
     "serial": "1110045893364F"
   },
   {
     "mobileNetwork": "Oi",
     "country": "Brazil",
     "description": "Oi prepaid SIM - orange",
+    "imgfront": "oi.br.1-front.png",
+    "imgback": "oi.br.1-back.png",
     "serial": "8955312229887518848"
   },
   {
     "mobileNetwork": "Movistar",
     "country": "Ecuador",
     "description": "Movistar prepaid SIM - all white (mate)",
+    "imgfront": "movistar.ec.1-front.png",
+    "imgback": "movistar.ec.1-back.png",
     "serial": "8959300500634708932"
   },
   {
     "mobileNetwork": "Movistar",
     "country": "Ecuador",
     "description": "Movistar prepaid SIM - all white (glossy)",
+    "imgfront": "movistar.ec.2-front.png",
+    "imgback": "movistar.ec.2-back.png",
     "serial": "8959300300544787807"
   },
   {
     "mobileNetwork": "Movistar",
     "country": "Ecuador",
     "description": "Movistar prepaid mini/micro SIM - guys jumping",
+    "imgfront": "movistar.ec.3-front.png",
+    "imgback": "movistar.ec.3-back.png",
     "serial": "8959300100542370683"
   },
   {
     "mobileNetwork": "Claro",
     "country": "Ecuador",
     "description": "Claro prepaid 64KB SIM - white with red chip",
+    "imgfront": "claro.ec.1-front.png",
+    "imgback": "claro.ec.1-back.png",
     "serial": "895930100039335777"
   },
   {
     "mobileNetwork": "Claro",
     "country": "Ecuador",
     "description": "Claro prepaid 128KB SIM - white with red chip",
+    "imgfront": "claro.ec.2-front.png",
+    "imgback": "claro.ec.2-back.png",
     "serial": "895930100043339784"
   },
   {
     "mobileNetwork": "Kölbi",
     "country": "Costa Rica",
     "description": "Kölbi prepaid - tarjeta USIM",
+    "imgfront": "kolbi.cr.1-front.png",
+    "imgback": "kolbi.cr.1-back.png",
     "serial": "8950601061311249067"
   },
   {
     "mobileNetwork": "My International Mobile",
     "country": "International",
     "description": "www.myINTERNATIONALmobile.com mini/micro SIM",
+    "imgfront": "myinternationalmobile.intl.1-front.png",
+    "imgback": "myinternationalmobile.intl.1-back.png",
     "serial": "8944538521007267435"
   }
 
