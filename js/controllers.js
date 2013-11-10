@@ -29,7 +29,7 @@ app.directive('ngHolder', function() {
       scope.$watch('ngHolder', function(value) {
         var img = "<img data-src='holder.js/" + args.ngHolder + "' class='placeholder' id='" + args.id + "-img'/>";
         element.append(img);
-        //Holder.run({images: '#' + args.id + '-img'});
+        //Holder.run({images: '.placeholder'});
       });
     }
   };
@@ -59,6 +59,9 @@ app.controller('SCController', function($scope,$http,$filter) {
     return result;
   }
 
+  $scope.$on('$viewContentLoaded', function() {
+    Holder.run({images: '.placeholder'});
+  });
   $scope.loadData = function() {
     var httpRequest = $http.get('mint.json').success(
       function(data) {
@@ -103,7 +106,7 @@ app.controller('SCController', function($scope,$http,$filter) {
       $scope.imageTitle = sim.serial + ' (Back)';
       $scope.currentImg = "images/full/" + sim.imgback;
     }
-    $('#myModal').modal({hide: false});
+    $('#myModal').modal({show: true});
   }
   $scope.loadData();
 });
