@@ -193,14 +193,6 @@
     "serial": "8950701122211358744"
   },
   {
-    "mobileNetwork": "ekit",
-    "country": "USA",
-    "description": "www.rechargeminutes.com SIM",
-    "imgfront": "ekit.us.1-front.png",
-    "imgback": "ekit.us.1-back.png",
-    "serial": "8944538521003740781"
-  },
-  {
     "mobileNetwork": "Red Rocket",
     "country": "USA",
     "description": "Red Rocket prepaid SIM card",
@@ -303,6 +295,14 @@
     "imgfront": "kolbi.cr.1-front.png",
     "imgback": "kolbi.cr.1-back.png",
     "serial": "8950601061311249067"
+  },
+  {
+    "mobileNetwork": "ekit",
+    "country": "International",
+    "description": "www.rechargeminutes.com SIM",
+    "imgfront": "ekit.us.1-front.png",
+    "imgback": "ekit.us.1-back.png",
+    "serial": "8944538521003740781"
   },
   {
     "mobileNetwork": "My International Mobile",
