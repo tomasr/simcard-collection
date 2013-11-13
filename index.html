@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='css/bootstrap-responsive.min.css'>
     <link rel='stylesheet' href='css/styles.css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src='js/angular.min.js'></script>
   </head>
   <body>
     <div class='jumbotron'>
@@ -20,7 +21,7 @@
       </div>
     </div>
 
-    <div class='container' ng-controller='SCController'>
+    <div class='container' ng-controller='SCController' ng-cloak>
       <div class="row marketing">
         <!-- filter header -->
         <form class='form-inline filter-bar'>
@@ -97,7 +98,6 @@
     <script src='js/jquery-ui-1.9.1.custom.min.js'></script>
     <script src='js/jquery.layout-latest.min.js'></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src='js/angular.min.js'></script>
     <script src='js/controllers.js'></script>
     <script src="js/holder.js"></script>
   </body>
