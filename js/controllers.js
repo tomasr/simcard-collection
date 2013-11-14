@@ -41,7 +41,7 @@ app.controller('SCController', function($scope,$http,$filter) {
   $scope.countryList = [];
   $scope.matchingSimsGrouped = [];
   $scope.matchingSims = [];
-  $scope.currentImg = null;
+  $scope.currentImg = 'images/blank-full.png';
   $scope.imageTitle = '';
 
   function groupByField(list, getter) {
@@ -106,7 +106,12 @@ app.controller('SCController', function($scope,$http,$filter) {
       $scope.imageTitle = sim.serial + ' (Back)';
       $scope.currentImg = "images/full/" + sim.imgback;
     }
+
     $('#myModal').modal({show: true});
   }
+  $('#myModal').on('hide.bs.modal', function() {
+    $scope.currentImg = "images/blank-full.png";
+    $scope.$apply();
+  });
   $scope.loadData();
 });
