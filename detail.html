@@ -1,0 +1,31 @@
+<div class="row marketing" ng-show='sim'>
+  <h2>{{sim.mobileNetwork}} <span class='label label-primary'>{{sim.country}}</span></h2>
+  <p>{{sim.description}}</p>
+
+  <div>
+    <div class='col-md-6'>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+          <h3 class='panel-title'>Front</h3>
+        </div> <!-- panel-heading -->
+        <div class='thumbnail'>
+          <img ng-src='images/full/{{sim.imgfront}}' />
+        </div>
+      </div>
+    </div>
+
+    <div class='col-md-6'>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+          <h3 class='panel-title'>Back</h3>
+        </div> <!-- panel-heading -->
+        <div class='thumbnail'>
+          <img ng-src='images/full/{{sim.imgback}}' />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row marketing" ng-show='!sim'>
+  <h2>Specified SIM is not available.</h2>
+</div>

@@ -1,4 +1,19 @@
-var app = angular.module('SCC',[]);
+var app = angular.module('SCC', []);
+app.config(['$routeProvider', function($routeProvider, $locationProvider) {
+    $routeProvider.when('/detail/:serial', {
+      templateUrl: 'detail.html',
+      controller: DetailController,
+      controllerAs: 'detail'
+    });
+    $routeProvider.when('', {
+      templateUrl: 'all.html',
+      controller: AllController,
+      controllerAs: 'all'
+    });
+
+    // configure html5 to get links working on jsfiddle
+    //$locationProvider.html5Mode(true);
+}]);
 
 app.filter('groupBy', function() {
   return function(items, groupedBy) {
@@ -35,33 +50,27 @@ app.directive('ngHolder', function() {
   };
 });
 
-app.controller('SCController', function($scope,$http,$filter) {
+function groupByField(list, getter) {
+  var result = {};
+  result[" all"] = list;
+  for ( var i=0; i < list.length; i++ ) {
+    var key = getter(list[i]);
+    var subset = result[key];
+    if ( !subset ) {
+      subset = [];
+      result[key] = subset;
+    }
+    subset.push(list[i]);
+  }
+  return result;
+}
+
+
+function SCController($scope,$http,$filter) {
   $scope.sims = [];
   $scope.networkList = [];
   $scope.countryList = [];
-  $scope.matchingSimsGrouped = [];
-  $scope.matchingSims = [];
-  $scope.currentImg = 'images/blank-full.png';
-  $scope.imageTitle = '';
 
-  function groupByField(list, getter) {
-    var result = {};
-    result[" all"] = list;
-    for ( var i=0; i < list.length; i++ ) {
-      var key = getter(list[i]);
-      var subset = result[key];
-      if ( !subset ) {
-        subset = [];
-        result[key] = subset;
-      }
-      subset.push(list[i]);
-    }
-    return result;
-  }
-
-  $scope.$on('$viewContentLoaded', function() {
-    Holder.run({images: '.placeholder'});
-  });
   $scope.loadData = function() {
     var httpRequest = $http.get('mint.json').success(
       function(data) {
@@ -74,6 +83,36 @@ app.controller('SCController', function($scope,$http,$filter) {
       })
   };
 
+  $scope.findSimBySerial = function(serial) {
+    for ( i=0; i < $scope.sims.length; i++ ) {
+      if ( $scope.sims[i].serial == serial ) {
+        return $scope.sims[i];
+      }
+    }
+    return null;
+  };
+
+  $scope.loadData();
+}
+
+function AllController($scope, $filter) {
+  $scope.matchingSimsGrouped = [];
+  $scope.matchingSims = [];
+  $scope.currentImg = 'images/blank-full.png';
+  $scope.imageTitle = '';
+
+  $scope.showImage = function(sim, image) {
+    if ( image === 'front' ) {
+      $scope.imageTitle = sim.serial + ' (Front)';
+      $scope.currentImg = "images/full/" + sim.imgfront;
+    } else {
+      $scope.imageTitle = sim.serial + ' (Back)';
+      $scope.currentImg = "images/full/" + sim.imgback;
+    }
+
+    $('#myModal').modal({show: true});
+  }
+
   $scope.filterData = function() {
     $scope.matchingSims = $scope.getMatchingCards();
     $scope.matchingSimsGrouped = $filter('groupBy')($scope.matchingSims, 2);
@@ -81,7 +120,7 @@ app.controller('SCController', function($scope,$http,$filter) {
 
   $scope.getMatchingCards = function() {
     var result = [];
-    var cardsByCountry = $scope.countryList[$scope.selectedCountry];
+    var cardsByCountry = $scope.$parent.countryList[$scope.selectedCountry];
     if ( !cardsByCountry ) {
       return result;
     }
@@ -98,20 +137,14 @@ app.controller('SCController', function($scope,$http,$filter) {
     }
   };
 
-  $scope.showImage = function(sim, image) {
-    if ( image === 'front' ) {
-      $scope.imageTitle = sim.serial + ' (Front)';
-      $scope.currentImg = "images/full/" + sim.imgfront;
-    } else {
-      $scope.imageTitle = sim.serial + ' (Back)';
-      $scope.currentImg = "images/full/" + sim.imgback;
-    }
-
-    $('#myModal').modal({show: true});
-  }
   $('#myModal').on('hide.bs.modal', function() {
     $scope.currentImg = "images/blank-full.png";
     $scope.$apply();
   });
-  $scope.loadData();
-});
+}
+
+
+// Controller for the detail page
+function DetailController($scope, $routeParams) {
+  $scope.sim = $scope.$parent.findSimBySerial($routeParams.serial);
+}

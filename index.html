@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='css/styles.css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src='js/angular.min.js'></script>
+    <script src='js/angular-route.js'></script>
   </head>
   <body>
     <div class='jumbotron'>
@@ -22,78 +23,17 @@
     </div>
 
     <div class='container' ng-controller='SCController' ng-cloak>
-      <div class="row marketing">
-        <!-- filter header -->
-        <form class='form-inline filter-bar'>
-          <div class='form-group'>
-            <label for='countryDropDown'>Country:</label>
-            <select class='form-control combo' id='countryDropDown' ng-model='selectedCountry' ng-change='filterData()'>
-              <option ng-repeat='(country,list) in countryList' value='{{country}}'>{{country}}</option>
-            </select>
 
-            <label for='networkDropDown'>Mobile Network:</label>
-            <select class='form-control combo' id='networkDropDown' ng-model='selectedNetwork' ng-change='filterData()'>
-              <option ng-repeat='(net,list) in networkList' value='{{net}}'>{{net}}</option>
-            </select>
-          </div>
-        </form>
-        <div ng-cloak class='alert alert-success' ng-show='matchingSims'>
-          Total Results: <strong>{{matchingSims.length}}</strong>
-        </div>
+      <div class="view-container">
+        <div ng-view class="view"></div>
+      </div>
 
-        <!-- results panel -->
-        <div class='container'>
-          <div ng-repeat='simGroup in matchingSimsGrouped'>
-            <div class='row-fluid'>
-              <div class='panel panel-default span6' ng-repeat='sim in simGroup'>
-                <div class='panel-heading'>
-                  <h3 class='panel-title'>{{sim.mobileNetwork}} <small>({{sim.country}})</small></h3>
-                </div> <!-- panel-heading -->
-
-                <div class='panel-body'>
-                  <div class='col-xs-6' ng-show='sim.imgfront'>
-                    <a href ng-click="showImage(sim, 'front')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgfront}}'/></a>
-                    <a href ng-click="showImage(sim, 'back')" class='thumbnail'><img ng-src='images/thumbs/{{sim.imgback}}'/></a>
-                  </div>
-                  <div class='col-xs-6' ng-show='!(sim.imgfront)'>
-                    <a href class='thumbnail' ng-holder='208x133' id='{{sim.serial}}-front'></a>
-                    <a href class='thumbnail' ng-holder='208x133' id='{{sim.serial}}-back'></a>
-                  </div>
-                  <div class='col-xs-6'>
-                    <p>{{sim.description}}</p>
-                    <small>{{sim.serial}}</small>
-                  </div>
-                </div> <!-- panel-body -->
-              </div> <!-- panel -->
-            </div> <!-- row-fluid -->
-          </div> <!-- repeat -->
-        </div> <!-- outer panel -->
-
-      </div> <!-- row marketing -->
-
-      <!-- Modal dialog for showing images-->
-      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel">{{imageTitle}}</h4>
-            </div>
-            <div class="modal-body">
-              <img ng-src='{{currentImg}}' ng-show='currentImg'/>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-
-
-    <div class="footer">
-      <p>&copy; <a href='http://winterdom.com/'>Tomas Restrepo</a> 2013</p>
-    </div>
-
+      <div class="footer">
+        <p>&copy; <a href='http://winterdom.com/'>Tomas Restrepo</a> 2013</p>
+      </div>
     </div> <!-- container -->
+
+
     <script src='js/jquery-1.9.1.js'></script>
     <script src='js/jquery-ui-1.9.1.custom.min.js'></script>
     <script src='js/jquery.layout-latest.min.js'></script>
