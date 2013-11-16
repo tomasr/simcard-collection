@@ -3,13 +3,13 @@
   <form class='form-inline filter-bar'>
     <div class='form-group'>
       <label for='countryDropDown'>Country:</label>
-      <select class='form-control combo' id='countryDropDown' ng-model='selectedCountry' ng-change='filterData()'>
-        <option ng-repeat='(country,list) in countryList' value='{{country}}'>{{country}}</option>
+      <select class='form-control combo' id='countryDropDown' ng-model='selectedCountry' 
+        ng-change='navigateToCountry()' ng-options="key as value for (key,value) in countryList">
       </select>
 
       <label for='networkDropDown'>Mobile Network:</label>
-      <select class='form-control combo' id='networkDropDown' ng-model='selectedNetwork' ng-change='filterData()'>
-        <option ng-repeat='(net,list) in networkList' value='{{net}}'>{{net}}</option>
+      <select class='form-control combo' id='networkDropDown' ng-model='selectedNetwork'
+        ng-change='navigateToNetwork()' ng-options="c for c in networkList">
       </select>
     </div>
   </form>
@@ -23,7 +23,7 @@
       <div class='row-fluid'>
         <div class='panel panel-default span6' ng-repeat='sim in simGroup'>
           <div class='panel-heading'>
-            <h3 class='panel-title'><a href='#/detail/{{sim.serial}}'>{{sim.mobileNetwork}}</a> <small>({{sim.country}})</small></h3>
+            <h3 class='panel-title'><a href='#/detail/{{sim.serial}}'>{{sim.mobileNetwork}}</a> <small>({{countryList[sim.country]}})</small></h3>
           </div> <!-- panel-heading -->
 
           <div class='panel-body'>

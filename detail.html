@@ -1,5 +1,10 @@
 <div class="row marketing" ng-show='sim'>
-  <h2>{{sim.mobileNetwork}} <span class='label label-primary'>{{sim.country}}</span></h2>
+  <ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li class="active">{{sim.serial}}</li>
+  </ol>
+
+  <h2>{{sim.mobileNetwork}} <span class='label label-primary'>{{countryList[sim.country]}}</span></h2>
   <p>{{sim.description}}</p>
 
   <div>
@@ -27,5 +32,9 @@
   </div>
 </div>
 <div class="row marketing" ng-show='!sim'>
+  <ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li class="active">Not found</li>
+  </ol>
   <h2>Specified SIM is not available.</h2>
 </div>
