@@ -102,10 +102,11 @@ function groupByField(list, getter) {
 }
 
 
-function SCController($scope, $http, $filter) {
+function SCController($scope, $http, $location, $filter) {
   $scope.sims = [];
   $scope.networkList = null;
   $scope.countryList = null;
+  $scope.previousRuote = null;
 
   $scope.loadData = function() {
     var httpRequest = $http.get('mint.json').success(
@@ -141,6 +142,18 @@ function SCController($scope, $http, $filter) {
     }
     return result;
   }
+
+  $scope.back = function() {
+    $location.path($scope.previousRuote);
+  };
+
+  $scope.$on('$locationChangeStart',function(evt, current, previous) {
+    if ( current === previous ) {
+      $scope.previousRoute = null;
+    } else {
+      $scope.previousRoute = previous;
+    }
+  });
 
   $scope.loadData();
 }

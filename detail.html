@@ -1,10 +1,11 @@
 <div class="row marketing" ng-show='sim'>
   <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
+    <li ng-show='previousRoute'><a ng-href="{{previousRoute}}">Back</a></li>
     <li class="active">{{sim.serial}}</li>
   </ol>
 
-  <h2>{{sim.mobileNetwork}} <span class='label label-primary'>{{countryList[sim.country]}}</span></h2>
+  <h2>{{sim.mobileNetwork}} <small><span class='label label-primary'>{{countryList[sim.country]}}</span><small></h2>
   <p>{{sim.description}}</p>
 
   <div>
