@@ -1,10 +1,3 @@
-.gridContainer {
-  height: 400px;
-  width: 600px;
-}
-.gridStyle {
-  height: 100%;
-}
 .combo {
   width: 180px;
 }
@@ -17,4 +10,16 @@
 
 .footer {
   border-top: 1px solid #ddd;
+}
+
+.jumbotron {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }

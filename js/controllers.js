@@ -118,7 +118,7 @@ function SCController($scope, $http, $location, $filter) {
         if (!$scope.$$phase) {
           $scope.$apply();
         }
-      })
+      });
   };
 
   $scope.findSimBySerial = function(serial) {

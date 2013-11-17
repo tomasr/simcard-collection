@@ -6,7 +6,6 @@
       <select class='form-control combo' id='countryDropDown' ng-model='selectedCountry' 
         ng-change='navigateToCountry()' ng-options="key as value for (key,value) in countryList">
       </select>
-
       <label for='networkDropDown'>Mobile Network:</label>
       <select class='form-control combo' id='networkDropDown' ng-model='selectedNetwork'
         ng-change='navigateToNetwork()' ng-options="c for c in networkList">
