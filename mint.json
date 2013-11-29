@@ -158,12 +158,36 @@
       "serial": "89543420711103284045"
     },
     {
+      "mobileNetwork": "Personal",
+      "country": "ar",
+      "description": "Personal prepaid SIM with Facebook (new logo - different SIM grip, deeper color)",
+      "imgfront": "personal.ar.5-front.png",
+      "imgback": "personal.ar.5-back.png",
+      "serial": "89543420213309118481"
+    },
+    {
       "mobileNetwork": "Claro",
       "country": "ar",
       "description": "Claro prepaid 128KB - black HLR:4",
       "imgfront": "claro.ar.1-front.png",
       "imgback": "claro.ar.1-back.png",
       "serial": "8954310112403687625"
+    },
+    {
+      "mobileNetwork": "Claro",
+      "country": "ar",
+      "description": "Claro prepaid 128KB - black HLR:3",
+      "imgfront": "claro.ar.2-front.png",
+      "imgback": "claro.ar.2-back.png",
+      "serial": "8954316123337176977"
+    },
+    {
+      "mobileNetwork": "Movistar",
+      "country": "ar",
+      "description": "Movistar prepaid mini/micro-SIM - people in prairie",
+      "imgfront": "movistar.ar.1-front.png",
+      "imgback": "movistar.ar.1-back.png",
+      "serial": "8954071100565645803"
     },
     {
       "mobileNetwork": "Telcel",
