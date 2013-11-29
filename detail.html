@@ -1,4 +1,4 @@
-<div class="row marketing" ng-show='sim'>
+<div ng-show='sim'>
   <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
     <li ng-show='previousRoute'><a ng-href="{{previousRoute}}">Back</a></li>
@@ -32,7 +32,7 @@
     </div>
   </div>
 </div>
-<div class="row marketing" ng-show='!sim'>
+<div class="container" ng-show='!sim'>
   <ol class="breadcrumb">
     <li><a href="#">Home</a></li>
     <li class="active">Not found</li>

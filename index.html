@@ -11,27 +11,32 @@
     <script src='js/angular-route.js'></script>
   </head>
   <body>
-    <div class='jumbotron'>
-      <div class='container'>
-        <h1><i class='fa fa-phone-square icon'> </i>My SIM Card Collection</h1>
-        <p class='lead'>One of my hobbies is collecting mint-on-card SIM cards.
-        I started on this a few years ago when I began to travel
-        through Latin America as part of my job. Although the collection
-        is fairly small at this time, it has been steadily growing
-        during the past couple of years.</p>
+    <div class='container' ng-controller='SCController' id='wrap'>
+
+      <div class='jumbotron'>
+        <div class='container'>
+          <h1><i class='fa fa-phone-square icon'> </i>My SIM Card Collection</h1>
+        </div>
       </div>
-    </div>
+      <div>
+          <p class='lead'>One of my hobbies is collecting mint-on-card SIM cards.
+          I started on this a few years ago when I began to travel
+          through Latin America as part of my job. Although the collection
+          is fairly small at this time, it has been steadily growing
+          during the past couple of years.</p>
+      </div>
 
-    <div class='container' ng-controller='SCController' ng-cloak>
-
-      <div class="view-container">
+      <div class="view-container" ng-cloak>
         <div ng-view class="view"></div>
       </div>
 
-      <div class="footer">
-        <p>&copy; <a href='http://winterdom.com/'>Tomas Restrepo</a> 2013</p>
-      </div>
     </div> <!-- container -->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Created by <a href="http://winterdom.com">Tomas Restrepo</a>. &copy; 2013</p>
+      </div>
+    </div>
 
 
     <script src='js/jquery-1.9.1.js'></script>
