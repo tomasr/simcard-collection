@@ -334,6 +334,14 @@
       "serial": "8950601061311249067"
     },
     {
+      "mobileNetwork": "Claro",
+      "country": "cr",
+      "description": "Claro prepaid 128KB SIM - H1",
+      "imgfront": "claro.cr.1-front.png",
+      "imgback": "claro.cr.1-back.png",
+      "serial": "895060301302006307"
+    },
+    {
       "mobileNetwork": "ekit",
       "country": "intl",
       "description": "www.rechargeminutes.com SIM",
