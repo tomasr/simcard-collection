@@ -310,6 +310,14 @@
       "serial": "8959300100542370683"
     },
     {
+      "mobileNetwork": "Movistar",
+      "country": "ec",
+      "description": "Movistar prepaid SIM - guys jumping",
+      "imgfront": "movistar.ec.4-front.png",
+      "imgback": "movistar.ec.4-back.png",
+      "serial": "8959300400522626298"
+    },
+    {
       "mobileNetwork": "Claro",
       "country": "ec",
       "description": "Claro prepaid 64KB SIM - white with red chip",
