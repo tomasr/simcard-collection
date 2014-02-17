@@ -30,6 +30,14 @@
       "serial": "8957732103018521254"
     },
     {
+      "mobileNetwork": "Uff! Móvil",
+      "country": "co",
+      "description": "Uff! SIM Card with Bancolombia logo",
+      "imgfront": "uff.co.3-front.png",
+      "imgback": "uff.co.3-back.png",
+      "serial": "8957732103018829108"
+    },
+    {
       "mobileNetwork": "UNE",
       "country": "co",
       "description": "Original UNE 'La SIM' card.",
@@ -228,6 +236,14 @@
       "imgfront": "masmovil.pa.1-front.png",
       "imgback": "masmovil.pa.1-back.png",
       "serial": "8950701122211358744"
+    },
+    {
+      "mobileNetwork": "+Móvil",
+      "country": "pa",
+      "description": "+Móvil prepaid mini/micro SIM, single tie",
+      "imgfront": "masmovil.pa.2-front.png",
+      "imgback": "masmovil.pa.2-back.png",
+      "serial": "8950701131614002399"
     },
     {
       "mobileNetwork": "Red Rocket",
