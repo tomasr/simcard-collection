@@ -134,6 +134,14 @@
       "serial": "000827468881360"
     },
     {
+      "mobileNetwork": "Quam",
+      "country": "ar",
+      "description": "Quam prepaid mini/micro SIM",
+      "imgfront": "quam.ar.1-front.png",
+      "imgback": "quam.ar.1-back.png",
+      "serial": "8954010811001285525"
+    },
+    {
       "mobileNetwork": "Personal",
       "country": "ar",
       "description": "Personal prepaid SIM - grey with black letters",
