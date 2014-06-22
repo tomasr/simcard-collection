@@ -86,6 +86,14 @@
       "serial": "57101201208562916"
     },
     {
+      "mobileNetwork": "Claro",
+      "country": "co",
+      "description": "Claro prepaid micro SIM Card GP 10.05 - 128Kb",
+      "imgfront": "claro.co.2-front.png",
+      "imgback": "claro.co.2-back.png",
+      "serial": "57101101311368824"
+    },
+    {
       "mobileNetwork": "Virgin Mobile",
       "country": "co",
       "description": "Virgin prepaid SIM card",
