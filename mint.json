@@ -7,6 +7,7 @@
       "cr" : "Costa Rica",
       "dr" : "Dominican Republic",
       "ec" : "Ecuador",
+      "fr" : "France",
       "intl" : "International",
       "mx" : "Mexico",
       "pa" : "Panama",
@@ -108,6 +109,14 @@
       "imgfront": "virgin.co.2-front.png",
       "imgback": "virgin.co.2-back.png",
       "serial": "8957123100900061157"
+    },
+    {
+      "mobileNetwork": "Virgin Mobile",
+      "country": "co",
+      "description": "Virgin prepaid SIM card",
+      "imgfront": "virgin.co.3-front.png",
+      "imgback": "virgin.co.3-back.png",
+      "serial": "8957123100902395510"
     },
     {
       "mobileNetwork": "Móvil Éxito",
@@ -396,6 +405,39 @@
       "imgfront": "myinternationalmobile.intl.1-front.png",
       "imgback": "myinternationalmobile.intl.1-back.png",
       "serial": "8944538521007267435"
+    },
+
+    {
+      "mobileNetwork": "Orange",
+      "country": "fr",
+      "description": "Orange 'la puce' USIM Prepaid mini/micro SIM",
+      "imgfront": "orange.fr.1-front.png",
+      "imgback": "orange.fr.1-back.png",
+      "serial": "02437300853100"
+    },
+    {
+      "mobileNetwork": "Syma",
+      "country": "fr",
+      "description": "Syma prepaid J2RE mini/micro SIM",
+      "imgfront": "syma.fr.1-front.png",
+      "imgback": "syma.fr.1-back.png",
+      "serial": "01426690860735"
+    },
+    {
+      "mobileNetwork": "Mobiho",
+      "country": "fr",
+      "description": "Mobiho prepaid mini/micro SIM",
+      "imgfront": "mobiho.fr.1-front.png",
+      "imgback": "mobiho.fr.1-back.png",
+      "serial": "1250890580517"
+    },
+    {
+      "mobileNetwork": "SFR",
+      "country": "fr",
+      "description": "SFR Ma SIM prepaid mini/micro SIM",
+      "imgfront": "sfr.fr.1-front.png",
+      "imgback": "sfr.fr.1-back.png",
+      "serial": "89331032140716839450"
     }
   ]
 }
